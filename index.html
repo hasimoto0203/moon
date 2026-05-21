@@ -5,48 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Midnight Moon</title>
     <style>
-        /* ここにデザイン（CSS）を書いています */
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #050515, #101030); /* 深夜の夜空のグラデーション */
+            background: linear-gradient(to bottom, #050515, #101030);
             height: 100vh;
             display: flex;
+            flex-direction: column; /* 縦並びにする */
             justify-content: center;
             align-items: center;
             overflow: hidden;
             color: #fff;
-            font-family: 'Georgia', '游明朝', serif; /* エモい雰囲気のフォント */
+            font-family: 'Georgia', '游明朝', serif;
         }
 
-        /* 月のデザイン */
+        /* 月のデザインとアニメーション */
         .moon {
             width: 150px;
             height: 150px;
-            background: #fffae6; /* 優しい月明かりの色 */
+            background: #fffae6;
             border-radius: 50%;
-            box-shadow: 0 0 40px #fffae6; /* 月の光がぼんやり広がるエフェクト */
-            animation: pulse 4s infinite ease-in-out;
+            animation: pulse 4s infinite ease-in-out; 
+            margin-bottom: 50px; /* フォームとの間隔をあける */
         }
+
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 30px #fffae6;
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 0 0 60px #fff5cc, 0 0 100px #ffeb99; /* 光が広がる */
-                transform: scale(1.02); /* 微かに大きくなる */
-            }
-            100% {
-                box-shadow: 0 0 30px #fffae6;
-                transform: scale(1);
-            }
+            0% { box-shadow: 0 0 30px #fffae6; transform: scale(1); }
+            50% { box-shadow: 0 0 60px #fff5cc, 0 0 100px #ffeb99; transform: scale(1.02); }
+            100% { box-shadow: 0 0 30px #fffae6; transform: scale(1); }
+        }
+
+        /* フォーム全体のスタイル */
+        .form-container {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* 入力欄（テキストエリア）のデザイン */
+        textarea {
+            width: 100%;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.05); /* うっすら透ける背景 */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px; /* 角を丸くする設定 */
+            color: #fff;
+            padding: 12px;
+            box-sizing: border-box;
+            resize: none; /* サイズ変更を禁止 */
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        /* 入力欄をクリックしたとき（フォーカス時） */
+        textarea:focus {
+            border-color: #fffae6; /* 月の色に合わせて光らせる */
+        }
+
+        /* 送信ボタンのデザイン */
+        button {
+            margin-top: 15px;
+            background: transparent;
+            border: 1px solid #fffae6;
+            color: #fffae6;
+            padding: 8px 24px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        /* ボタンにマウスを乗せたとき */
+        button:hover {
+            background: #fffae6;
+            color: #101030;
         }
     </style>
 </head>
 <body>
 
     <div class="moon"></div>
+
+    <div class="form-container">
+        <form id="tweet-form">
+            <textarea placeholder="深夜2時のつぶやきをここに..." maxlength="140"></textarea>
+            <br>
+            <button type="submit">夜空に放つ</button>
+        </form>
+    </div>
 
 </body>
 </html>
