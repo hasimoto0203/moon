@@ -26,6 +26,21 @@
             background: #fffae6; /* 優しい月明かりの色 */
             border-radius: 50%;
             box-shadow: 0 0 40px #fffae6; /* 月の光がぼんやり広がるエフェクト */
+            animation: pulse 4s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 30px #fffae6;
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 60px #fff5cc, 0 0 100px #ffeb99; /* 光が広がる */
+                transform: scale(1.02); /* 微かに大きくなる */
+            }
+            100% {
+                box-shadow: 0 0 30px #fffae6;
+                transform: scale(1);
+            }
         }
     </style>
 </head>
